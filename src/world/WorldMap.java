@@ -1,6 +1,7 @@
 package world;
 
 import entities.Entity;
+import entities.Grass;
 import entities.creatures.Herbivore;
 
 import java.util.HashMap;
@@ -14,16 +15,14 @@ public class WorldMap {
     public WorldMap(int width, int height){
         this.width = width;
         this.height = height;
-        this.cells = new HashMap<>(width*height);
+        this.cells = new HashMap<>();
     }
 
     public WorldMap(){
         this.width = 5;
         this.height = 5;
-        this.cells = new HashMap<>(width*height);
+        this.cells = new HashMap<>();
 //        Random random = new Random();
-        Herbivore herbivore = new Herbivore(5, 1);
-        cells.put(new Cell(2, 3),herbivore);
     }
 
     public int getWidth(){
@@ -34,7 +33,7 @@ public class WorldMap {
         return height;
     }
 
-    public Entity getEntity(int x, int y){
+    public Entity getEntityByCoordinates(int x, int y){
         return cells.get(new Cell(x, y));
     }
     public Map<Cell, Entity> getCells(){

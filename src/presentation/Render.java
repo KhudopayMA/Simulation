@@ -1,31 +1,32 @@
 package presentation;
 
-import entities.*;
+import entities.Entity;
+import entities.Grass;
+import entities.Rock;
+import entities.Tree;
 import entities.creatures.Herbivore;
 import entities.creatures.Predator;
-import world.Cell;
 import world.WorldMap;
 
-import java.util.Set;
 
 public class Render {
     public void renderMap(WorldMap worldMap){
         System.out.println();
         for (int x = 0; x < worldMap.getWidth(); x++){
             for (int y = 0; y < worldMap.getHeight(); y++){
-                Entity entity = worldMap.getEntity(x, y);
-                Emoji emoji = getEmojiForEntity(entity);
-                System.out.print(emoji);
+                Entity entity = worldMap.getEntityByCoordinates(x, y);
+                if (entity == null){
+                    System.out.print(Emoji.PLAIN);
+                } else {
+                    System.out.print(getEmojiForEntity(entity));
+                }
             }
             System.out.println();
         }
-        //todo рендер карты
     }
 
     private Emoji getEmojiForEntity(Entity entity){
-        if (entity instanceof Plain){
-            return Emoji.PLAIN;
-        } else if (entity instanceof Grass){
+        if (entity instanceof Grass){
             return Emoji.GRASS;
         } else if (entity instanceof Predator){
             return Emoji.PREDATOR;

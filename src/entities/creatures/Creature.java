@@ -1,6 +1,7 @@
 package entities.creatures;
 
 import entities.Entity;
+import world.WorldMap;
 
 import java.util.Objects;
 
@@ -36,10 +37,8 @@ public abstract class Creature extends Entity {
         this.hp = hp;
     }
 
+    public void makeMove(WorldMap worldMap){
 
-
-
-    public void makeMove(){
         // todo pass in method position from map or something like that
     }
 }

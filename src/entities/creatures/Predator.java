@@ -10,14 +10,4 @@ public class Predator extends Creature{
         this.attackDamage = 5;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Predator predator)) return false;
-        return attackDamage == predator.attackDamage && speed == predator.speed;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode());
-    }
 }
