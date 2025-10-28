@@ -10,18 +10,18 @@ import java.util.Map;
 public class WorldMap {
     private final int width;
     private final int height;
-    private final Map<Cell, Entity> cells;
+    private final Map<Cell, Entity> entites;
 
     public WorldMap(int width, int height){
         this.width = width;
         this.height = height;
-        this.cells = new HashMap<>();
+        this.entites = new HashMap<>();
     }
 
     public WorldMap(){
         this.width = 5;
         this.height = 5;
-        this.cells = new HashMap<>();
+        this.entites = new HashMap<>();
 //        Random random = new Random();
     }
 
@@ -34,10 +34,10 @@ public class WorldMap {
     }
 
     public Entity getEntityByCoordinates(int x, int y){
-        return cells.get(new Cell(x, y));
+        return entites.get(new Cell(x, y));
     }
     public Map<Cell, Entity> getCells(){
-        return cells;
+        return entites;
     }
 
 
