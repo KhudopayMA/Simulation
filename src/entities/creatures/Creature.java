@@ -38,7 +38,7 @@ public abstract class Creature extends Entity {
     }
 
     public void makeMove(WorldMap worldMap){
-
+        // todo про методы в абстрактных классах
         // todo pass in method position from map or something like that
     }
 }
