@@ -3,8 +3,8 @@ package world;
 import java.util.Objects;
 
 public class Cell {
-    private final int x;
-    private final int y;
+    public final int x;
+    public final int y;
     private final int hash;
 
     public Cell(int x, int y){

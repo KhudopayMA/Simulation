@@ -20,6 +20,7 @@ public class Render {
                 } else {
                     System.out.print(getEmojiForEntity(entity));
                 }
+                System.out.print("\t");
             }
             System.out.println();
         }

@@ -1,7 +1,13 @@
 package world;
 
+import entities.Entity;
 import entities.Grass;
+import entities.creatures.Creature;
 import entities.creatures.Herbivore;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Actions {
     private WorldMap worldMap;
@@ -18,6 +24,11 @@ public class Actions {
     }
 
     public void turnActions(){
-//        this.worldMap.getCells().
+        for (Map.Entry<Cell, Entity> entity: worldMap.entities.entrySet()){
+                if (entity.getValue() instanceof Creature) {
+                    List<Cell> path = Pathfinder.findPath(worldMap, entity.getKey(), (Creature)entity.getValue());
+                    ((Creature) entity.getValue()).makeMove(worldMap, entity.getKey(), path);
+                }
+        }
     }
 }

@@ -1,17 +1,21 @@
 package entities.creatures;
 
 import entities.Entity;
+import world.Cell;
 import world.WorldMap;
 
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Creature extends Entity {
     protected int hp;
     protected final int speed;
+    protected final Class<? extends Entity> targetType;
 
-    public Creature(int hp, int speed){
+    public Creature(int hp, int speed, Class<? extends Entity> targetType){
         this.hp = hp;
         this.speed = speed;
+        this.targetType = targetType;
     }
 
     @Override
@@ -25,6 +29,10 @@ public abstract class Creature extends Entity {
         return Objects.hashCode(speed);
     }
 
+    public Class<? extends Entity> getTargetType(){
+        return targetType;
+    }
+
     public int getSpeed(){
         return speed;
     }
@@ -36,9 +44,7 @@ public abstract class Creature extends Entity {
     public void setHP(int hp){
         this.hp = hp;
     }
-
-    public void makeMove(WorldMap worldMap){
-        // todo про методы в абстрактных классах
-        // todo pass in method position from map or something like that
-    }
+    // todo про методы в абстрактных классах
+    // todo pass in method position from map or something like that
+    abstract public void makeMove(WorldMap worldMap, Cell currentCell, List<Cell> path);
 }

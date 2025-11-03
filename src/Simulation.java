@@ -11,8 +11,8 @@ public class Simulation {
         Render render = new Render();
         actions.initActions();
         while (true){
-            nextTurn(actions);
             render.renderMap(worldMap);
+            nextTurn(actions);
         }
     }
 
