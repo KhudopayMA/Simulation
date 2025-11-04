@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Pathfinder {
     public static List<Cell> findPath(WorldMap worldMap, Cell entityLocation, Creature targetEntity) {
-        Deque<Cell> queue = new LinkedList<>();
+        Queue<Cell> queue = new LinkedList<>();
         Map<Cell, List<Cell>> pathsToTheCells = new HashMap<>();
         Set<Cell> visitedCells = new HashSet<>();
         int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
@@ -18,9 +18,9 @@ public class Pathfinder {
         pathsToTheCells.put(entityLocation, new LinkedList<>());
         visitedCells.add(entityLocation);
         while (!queue.isEmpty()) {
-            Cell cell = queue.poll();
+            Cell cell = queue.remove();
 
-            if (target.isInstance(worldMap.entities.get(cell))) {
+            if (target.isInstance(worldMap.getEntityByCell(cell))) {
                 List<Cell> path = pathsToTheCells.get(cell);
                 path.add(cell);
                 return path;
@@ -29,9 +29,9 @@ public class Pathfinder {
             for (int[] direction : directions) {
                 int x = cell.x + direction[0];
                 int y = cell.y + direction[1];
-                if (!(x < worldMap.width) && (y < worldMap.height)) continue;
+                if (x < 0 || x >= worldMap.getWidth() || y < 0 || y>= worldMap.getHeight()) continue;
                 Cell neighbor = new Cell(x, y);
-                Entity neighborEntity = worldMap.entities.get(neighbor);
+                Entity neighborEntity = worldMap.getEntityByCell(neighbor);
                 if (neighborEntity instanceof Rock || neighborEntity instanceof Tree) continue;
                 if (!visitedCells.contains(neighbor)){
                     List<Cell> pathToNeighbor = new ArrayList<>(pathsToTheCells.get(cell));

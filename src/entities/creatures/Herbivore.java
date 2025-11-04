@@ -19,8 +19,8 @@ public class Herbivore extends Creature{
     public void makeMove(WorldMap worldMap, Cell currentCell,  List<Cell> path){
         if (!path.isEmpty()){
             Cell newCell = path.get(speed);
-            worldMap.entities.remove(currentCell);
-            worldMap.entities.put(newCell, this);
+            worldMap.removeCell(currentCell);
+            worldMap.addEntity(newCell, this);
         }
         System.out.println(path);
         // todo вызывает метод поиска bfs а карте и ищет ближайшую траву

@@ -18,6 +18,10 @@ public class Predator extends Creature{
 
     @Override
     public void makeMove(WorldMap worldMap, Cell currentCell, List<Cell> path) {
-
+        if (!path.isEmpty()){
+            Cell newCell = path.get(speed);
+            worldMap.removeCell(currentCell);
+            worldMap.addEntity(newCell, this);
+        }
     }
 }
