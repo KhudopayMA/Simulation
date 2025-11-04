@@ -44,7 +44,17 @@ public abstract class Creature extends Entity {
     public void setHP(int hp){
         this.hp = hp;
     }
-    // todo про методы в абстрактных классах
-    // todo pass in method position from map or something like that
-    abstract public void makeMove(WorldMap worldMap, Cell currentCell, List<Cell> path);
+
+    public void makeMove(WorldMap worldMap, Cell currentCell, List<Cell> path){
+        if (!path.isEmpty()){
+            Cell newCell;
+            if (path.size() <= speed){
+                newCell = path.get(path.size()-1);
+            } else {
+                newCell = path.get(speed-1);
+            }
+            worldMap.removeCell(currentCell);
+            worldMap.addEntity(newCell, this);
+        }
+    }
 }

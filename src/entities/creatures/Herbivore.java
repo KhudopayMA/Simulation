@@ -15,16 +15,16 @@ public class Herbivore extends Creature{
         super(hp, speed, Grass.class);
     }
 
-    @Override
-    public void makeMove(WorldMap worldMap, Cell currentCell,  List<Cell> path){
-        if (!path.isEmpty()){
-            Cell newCell = path.get(speed);
-            worldMap.removeCell(currentCell);
-            worldMap.addEntity(newCell, this);
-        }
-        System.out.println(path);
-        // todo вызывает метод поиска bfs а карте и ищет ближайшую траву
-    }
+//    @Override
+//    public void makeMove(WorldMap worldMap, Cell currentCell,  List<Cell> path){
+//        if (!path.isEmpty()){
+//            Cell newCell = path.get(speed);
+//            worldMap.removeCell(currentCell);
+//            worldMap.addEntity(newCell, this);
+//        }
+//        System.out.println(path);
+//        // todo вызывает метод поиска bfs а карте и ищет ближайшую траву
+//    }
 
     // todo override Creature class method or create another,
     //  where Herbivore scan map and try to reach the closest grass

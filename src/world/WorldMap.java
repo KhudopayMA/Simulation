@@ -1,8 +1,6 @@
 package world;
 
 import entities.Entity;
-import entities.Grass;
-import entities.creatures.Herbivore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +20,6 @@ public class WorldMap {
         this.width = 5;
         this.height = 5;
         this.entities = new HashMap<>();
-//        Random random = new Random();
     }
 
     public int getWidth(){

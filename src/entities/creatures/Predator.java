@@ -16,12 +16,17 @@ public class Predator extends Creature{
         this.attackRange = 2;
     }
 
-    @Override
-    public void makeMove(WorldMap worldMap, Cell currentCell, List<Cell> path) {
-        if (!path.isEmpty()){
-            Cell newCell = path.get(speed);
-            worldMap.removeCell(currentCell);
-            worldMap.addEntity(newCell, this);
-        }
-    }
+//    @Override
+//    public void makeMove(WorldMap worldMap, Cell currentCell, List<Cell> path) {
+//        if (!path.isEmpty()){
+//            Cell newCell;
+//            if (path.size() <= speed){
+//                newCell = path.get(path.size()-1);
+//            } else {
+//                newCell = path.get(speed-1);
+//            }
+//            worldMap.removeCell(currentCell);
+//            worldMap.addEntity(newCell, this);
+//        }
+//    }
 }

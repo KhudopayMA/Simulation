@@ -1,8 +1,6 @@
 package world;
 
 import entities.Entity;
-import entities.Rock;
-import entities.Tree;
 import entities.creatures.Creature;
 
 import java.util.*;
@@ -29,10 +27,10 @@ public class Pathfinder {
             for (int[] direction : directions) {
                 int x = cell.x + direction[0];
                 int y = cell.y + direction[1];
-                if (x < 0 || x >= worldMap.getWidth() || y < 0 || y>= worldMap.getHeight()) continue;
+                if (x < 0 || x >= worldMap.getWidth() || y < 0 || y >= worldMap.getHeight()) continue;
                 Cell neighbor = new Cell(x, y);
                 Entity neighborEntity = worldMap.getEntityByCell(neighbor);
-                if (neighborEntity instanceof Rock || neighborEntity instanceof Tree) continue;
+                if (neighborEntity != null && !target.isInstance(neighborEntity)) continue;
                 if (!visitedCells.contains(neighbor)){
                     List<Cell> pathToNeighbor = new ArrayList<>(pathsToTheCells.get(cell));
                     pathToNeighbor.add(cell);
@@ -40,7 +38,6 @@ public class Pathfinder {
                     queue.add(neighbor);
                     visitedCells.add(neighbor);
                 }
-
             }
         }
         return new LinkedList<>();
